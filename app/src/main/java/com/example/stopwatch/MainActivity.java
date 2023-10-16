@@ -3,7 +3,6 @@ package com.example.stopwatch;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,15 +16,21 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private Runnable runnable;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         stopwatchTextView = findViewById(R.id.stopwatchTextView);
+
         startButton = findViewById(R.id.startButton);
+
         stopButton = findViewById(R.id.stopButton);
+
         resetButton = findViewById(R.id.resetButton);
+
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void startStopwatch() {
         if (!isRunning) {
             isRunning = true;
             startButton.setEnabled(false);
             stopButton.setEnabled(true);
+
+
 
             runnable = new Runnable() {
                 @Override
@@ -67,12 +78,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void stopStopwatch() {
         isRunning = false;
         startButton.setEnabled(true);
         stopButton.setEnabled(false);
         handler.removeCallbacks(runnable);
     }
+
+
 
     private void resetStopwatch() {
         isRunning = false;
@@ -82,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
         updateTimer(seconds);
         handler.removeCallbacks(runnable);
     }
+
+
+
 
     private void updateTimer(int seconds) {
         int hours = seconds / 3600;
